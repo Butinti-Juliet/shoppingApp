@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>
+            Grocery App
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- <ion-input></ion-input> 
+    <ion-button (click)="submit()">SUBMIT</ion-button> -->
+
+    <!-- (on console) -->
+    <!-- <ion-item *ngFor="let grocery of groceryList | async">
+        
+        {{grocery.name}} 
+        {{grocery.price}} 
+        {{grocery.type}}
+
+    </ion-item> -->
+
+    <!-- <ion-button (click)="update()">Update</ion-button> -->
+
+    <!-- (on screen) -->
+
+    <ion-item *ngFor="let item of itemList" (click)="add(item)">
+
+        {{item.name}} {{item.price}} {{item.type}} {{item.key}}
+
+    </ion-item>
+    <div class="but">
+        <ion-button (click)="delete()">Delete</ion-button>
+        <ion-button (click)="add2()">Add</ion-button>
+    </div>
+
+</ion-content>

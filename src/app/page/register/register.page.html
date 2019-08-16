@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar color="tertiary">
+        <ion-title>Register</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+
+        <ion-item>
+            <br>
+            <ion-icon name="paper"></ion-icon>
+            <br>
+            <ion-label position="floating">Email Address:</ion-label>
+            <ion-input placeholder="Enter your email address" type="text" [(ngModel)]="user.email"></ion-input>
+
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Password:</ion-label>
+            <ion-input placeholder="Enter your password" type="password" [(ngModel)]="user.password"></ion-input>
+
+        </ion-item>
+        <br>
+        <div class="but">
+            <!-- <ion-button (click)="login()" [routerLink]="['/login']">Login</ion-button> -->
+            <ion-button (click)="register(user)" [routerLink]="['/login']">Register</ion-button>
+        </div>
+    </ion-card>
+
+</ion-content>
