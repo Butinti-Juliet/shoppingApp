@@ -1,3 +1,94 @@
-.but {
-    text-align: center;
-}
+    .but {
+        text-align: center;
+    }
+    
+    .container {
+        color: white;
+    }
+    
+    .back {
+        background-color: rgb(221, 199, 219);
+        height: 100%;
+    }
+    
+    .card {
+        background-color: rgb(221, 199, 219);
+    }
+    
+    .grop {
+        text-align: center;
+    }
+    
+    .jay {
+        text-align: center;
+    }
+    
+    .boot {
+        text-align: center;
+    }
+    
+    .cover {
+        background-color: rgb(190, 150, 187);
+        height: 100%;
+    }
+    
+    // .btn-group {
+    //     text-align: center;
+    // }
+    // .back {
+    //     background-image: url('bhebhe.jpg');
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     background-position: center;
+    //     font-family: 'Numans', sans-serif;
+    //     position: relative;
+    //     height: 1000px;
+    //     z-index: 2;
+    //     color: white;
+    // }
+    // <font size="6">
+    body {
+        text-align: center;
+        background: #fcfcfa;
+        color: black;
+        font-family: Futura, sans-serif;
+    }
+    
+    .container {
+        max-width: 50%;
+        margin: 40px auto;
+        color: black;
+    }
+    
+    .hr-text {
+        line-height: 1em;
+        position: relative;
+        outline: 0;
+        border: 0;
+        color: black;
+        text-align: center;
+        height: 1.5em;
+        opacity: .5;
+        &:before {
+            content: '';
+            // use the linear-gradient for the fading effect
+            // use a solid background color for a solid bar
+            background: linear-gradient(to right, transparent, #818078, transparent);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+        }
+        &:after {
+            content: attr(data-content);
+            position: relative;
+            display: inline-block;
+            color: #818078;
+            color: black;
+            padding: 0 .5em;
+            line-height: 1.5em;
+            // this is really the only tricky part, you need to specify the background color of the container element...
+            background-color: #fcfcfa;
+        }
+    }

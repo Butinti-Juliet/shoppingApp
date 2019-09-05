@@ -19,12 +19,12 @@
     --ion-color-secondary-shade: #0bb8cc;
     --ion-color-secondary-tint: #24d6ea;
     /** tertiary **/
-    --ion-color-tertiary: #351c88;
+    --ion-color-tertiary: rgb(212, 80, 153);
     --ion-color-tertiary-rgb: 112, 68, 255;
     --ion-color-tertiary-contrast: #ffffff;
     --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-    --ion-color-tertiary-shade: #351c88;
-    --ion-color-tertiary-tint: #351c88;
+    --ion-color-tertiary-shade: rgb(212, 80, 153);
+    --ion-color-tertiary-tint: rgb(212, 80, 153);
     /** success **/
     --ion-color-success: #10dc60;
     --ion-color-success-rgb: 16, 220, 96;
@@ -61,10 +61,10 @@
     --ion-color-medium-shade: #86888f;
     --ion-color-medium-tint: #a2a4ab;
     /** light **/
-    --ion-color-light: #f4f5f8;
+    --ion-color-light: aquamarine;
     --ion-color-light-rgb: 244, 244, 244;
     --ion-color-light-contrast: #000000;
     --ion-color-light-contrast-rgb: 0, 0, 0;
-    --ion-color-light-shade: #d7d8da;
-    --ion-color-light-tint: #f5f6f9;
+    --ion-color-light-shade: aquamarine;
+    --ion-color-light-tint: aquamarine;
 }

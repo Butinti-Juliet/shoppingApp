@@ -15,6 +15,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 
 
+
+
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyCZWgsvBfBgQB7Lc9IkfP2oe4cJ9043uHw",
   authDomain: "shoppingapp-ffd04.firebaseapp.com",
@@ -38,4 +42,5 @@ const firebaseConfig = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

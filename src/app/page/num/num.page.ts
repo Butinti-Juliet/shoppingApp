@@ -3,12 +3,26 @@ import { PhoneNumber } from 'src/app/module/phone';
 import * as firebase from 'firebase';
 import { WindowService } from 'src/app/service/window.service';
 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCZWgsvBfBgQB7Lc9IkfP2oe4cJ9043uHw",
+  authDomain: "shoppingapp-ffd04.firebaseapp.com",
+  databaseURL: "https://shoppingapp-ffd04.firebaseio.com",
+  projectId: "shoppingapp-ffd04",
+  storageBucket: "shoppingapp-ffd04.appspot.com",
+  messagingSenderId: "262192958477",
+  appId: "1:262192958477:web:53f279b931555a52"
+};
+
+
+
 @Component({
   selector: 'app-num',
   templateUrl: './num.page.html',
   styleUrls: ['./num.page.scss'],
 })
 export class NumPage implements OnInit {
+
 
   windowRef: any;
 
@@ -18,7 +32,10 @@ export class NumPage implements OnInit {
 
   user: any;
 
-  constructor(private win: WindowService) { }
+  constructor(private win: WindowService) {
+
+    // firebase.initializeApp(firebaseConfig);
+   }
 
   ngOnInit() {
     this.windowRef = this.win.windowRef

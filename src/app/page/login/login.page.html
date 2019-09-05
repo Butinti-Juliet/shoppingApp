@@ -44,110 +44,179 @@
            
         </div>
     </ion-card> -->
+    <div class="cover">
+        <ion-card class="jay">
+            <div class="back">
+                <div class="row">
 
-    <div class="row">
+                    <!-- <div class="" style="width: 500px; margin: auto"> -->
 
-        <div class="" style="width: 500px; margin: auto">
 
-            <div class="card">
-                <!-- When Uses is Not Logged In -->
-                <div class="card-body" *ngIf="!userDetails">
-                    <div class="row">
-                        <div class="col-sm-12 text-center">
-                            <div class="btn-group">
-                                <ion-button type="button" class="btn" [ngClass]="{'btn-primary
-                          active': selectedVal == 'login' }" (click)="onValChange('login')"><strong>Login <ion-icon name="lock"></ion-icon> </strong></ion-button>
-                                <ion-button type="button" class="btn" [ngClass]="{'btn-primary
-                          active': selectedVal == 'register' }" (click)="onValChange('register')"><strong>Register <ion-icon name="paper"></ion-icon> </strong></ion-button>
+                    <div class="card">
+
+                        <!-- When Uses is Not Logged In -->
+                        <div class="card-body" *ngIf="!userDetails">
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <div class="btn-group">
+
+                                        <ion-button type="button" class="btn" [ngClass]="{'btn-primary
+                          active': selectedVal == 'login' }" color="tertiary" (click)="onValChange('login')">
+                                            <strong>Login <ion-icon name="lock"></ion-icon> </strong>
+                                        </ion-button>
+
+                                        <ion-button type="button" class="btn" [ngClass]="{'btn-primary
+                          active': selectedVal == 'register' }" color="tertiary" (click)="onValChange('register')"><strong>Register <ion-icon name="paper"></ion-icon> </strong></ion-button>
+                                    </div>
+
+                                </div>
                             </div>
 
-                        </div>
-                    </div>
+                            <div class="form-group">
+                                <ion-label for="email">Email</ion-label>
+                                <ion-input type="email" class="form-control" [(ngModel)]="emailInput" id="email" placeholder="Enter your Email"></ion-input>
+                            </div>
+                            <div class="form-group" *ngIf="!isForgotPassword">
+                                <ion-label for="password">Password</ion-label>
+                                <ion-input type="password" class="form-control" [(ngModel)]="passwordInput" id="password" placeholder="Enter Your Password"></ion-input>
+                            </div>
+                            <div class="form-group" *ngIf="!isForgotPassword">
 
-                    <div class="form-group">
-                        <ion-label for="email">Email</ion-label>
-                        <ion-input type="email" class="form-control" [(ngModel)]="emailInput" id="email" placeholder="Enter your Email"></ion-input>
-                    </div>
-                    <div class="form-group" *ngIf="!isForgotPassword">
-                        <ion-label for="password">Password</ion-label>
-                        <ion-input type="password" class="form-control" [(ngModel)]="passwordInput" id="password" placeholder="Enter Your Password"></ion-input>
-                    </div>
-                    <div class="form-group" *ngIf="!isForgotPassword">
-
-                        <span *ngIf="selectedVal == 'login'; else elseBlock">
-                      <ion-button type="button" class="btn btn-primary" (click)="loginUser()">LogIn</ion-button>
+                                <span *ngIf="selectedVal == 'login'; else elseBlock">
+                      <ion-button type="button" class="btn btn-primary" color="tertiary" (click)="loginUser()">Login</ion-button>
+                     
                     </span>
-                        <ng-template #elseBlock>
-                            <ion-button type="button" class="btn btn-primary" (click)="registerUser()">Register</ion-button>
-                        </ng-template>
-                        &nbsp; &nbsp; &nbsp;
-                        <a href="javascript:void(0)" (click)="this.isForgotPassword= true;">Forgot
+                                <ng-template #elseBlock>
+                                    <ion-button type="button" class="btn btn-primary" color="tertiary" (click)="registerUser()">Register</ion-button>
+                                </ng-template>
+                                &nbsp; &nbsp; &nbsp;
+                                <a href="javascript:void(0)" (click)="this.isForgotPassword= true;">Forgot
                       Password?</a>
 
-                    </div>
-                    <div class="form-group" *ngIf="isForgotPassword">
+                            </div>
+                            <div class="form-group" *ngIf="isForgotPassword">
 
-                        <ion-button type="button" class="btn" (click)="this.isForgotPassword=
+                                <ion-button type="button" class="btn" color="tertiary" (click)="this.isForgotPassword=
                       false;">Cancel</ion-button>
-                        <ion-button type="button" class="btn btn-primary" (click)="forgotPassword()">Get email to reset passowrd</ion-button>
-                    </div>
-                    <div class="form-group text-center">
-                        <img src="../assets/google.jpg" alt="" srcset="" (click)="googleLogin()" style="cursor: pointer;" width="250px">
-                    </div>
+                                <ion-button type="button" class="btn btn-primary" color="tertiary" (click)="forgotPassword()">Get email to reset passowrd</ion-button>
+                            </div>
 
-                </div>
+                            <br>
+                            <div class="container">
 
-                <!-- When Uses is Logged In using Email or Google Account -->
-                <div class="card-body" *ngIf="userDetails">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <ul class="list-group">
-                                <li class="list-group-item">Display Name: {{userDetails['displayName']}}
-                                </li>
-                                <li class="list-group-item">Email: {{userDetails['email']}}</li>
-                                <li class="list-group-item">Is Email Varified: {{userDetails['emailVerified']}}
-                                </li>
-                                <li class="list-group-item">
-                                    <ion-button type="button" class="btn btn-danger" (click)="logoutUser()">Logout</ion-button>
-                                </li>
-                            </ul>
+                                <hr class="hr-text" data-content="Or login with:">
+
+                            </div>
+
+                            <!-- <div class="form-group text-center">
+                            <img src="../assets/gtg.jpg" alt="" srcset="" (click)="googleLogin()" style="cursor: pointer;" width="250px">
                         </div>
+                        <div class="form-group text-center">
+                            <img src="../assets/fb.jpg" alt="" srcset="" (click)="facebookSignIn()" style="cursor: pointer;" width="250px">
+
+
+                        </div>
+
+                        <ion-button [routerLink]="['/num']">Sign in with PhoneNumber</ion-button>
+
+                        <ion-button (click)="twitterSignIn()">Sign in with twitter</ion-button> -->
+                            <ion-card class="boot">
+                                <div class="grop">
+                                    <ion-grid class="btn-group">
+
+                                        <ion-row>
+                                            <ion-col>
+                                                <img src="../assets/ggggg.jpg" alt="" srcset="" (click)="googleLogin()" style="cursor: pointer;" width="70px">
+
+
+                                            </ion-col>
+                                            <ion-col>
+                                                <img src="../assets/f.jpg" alt="" srcset="" (click)="facebookSignIn()" style="cursor: pointer;" width="88px">
+
+                                            </ion-col>
+                                            <ion-col>
+
+                                                <!-- <ion-button [routerLink]="['/num']">Sign in with PhoneNumber</ion-button> -->
+                                                <img src="../assets/phone.jpg" alt="" srcset="" [routerLink]="['/num']" style="cursor: pointer;" width="80px">
+
+                                            </ion-col>
+                                            <ion-col>
+
+                                                <!-- <ion-button (click)="twitterSignIn()">Sign in with twitter</ion-button> -->
+                                                <img src="../assets/twit.jpg" alt="" srcset="" (click)="twitterSignIn()" style="cursor: pointer;" width="80px">
+
+                                            </ion-col>
+                                        </ion-row>
+
+                                    </ion-grid>
+                                </div>
+                            </ion-card>
+
+
+                        </div>
+
+                        <!-- When Uses is Logged In using Email or Google Account -->
+                        <div class="card-body" *ngIf="userDetails">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Display Name: {{userDetails['displayName']}}
+                                        </li>
+                                        <li class="list-group-item">Email: {{userDetails['email']}}</li>
+                                        <li class="list-group-item">Is Email Varified: {{userDetails['emailVerified']}}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <ion-button type="button" class="btn btn-danger" color="tertiary" (click)="logoutUser()">Logout</ion-button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+                    <div class="alert alert-{{responseMessageType}}" role="alert" *ngIf="responseMessage.length">
+                        {{responseMessage}}
+                    </div>
+                    <!-- </div> -->
+
+
                 </div>
+
+
+                <br><br>
+
+                <!-- <div class="front">
+            <div [hidden]="user">
+                <h1>Sign In with Your Phone Number
+                    <ion-icon name="call"></ion-icon>
+                </h1>
+
+                <label for="phone">Phone Number:</label><br>
+                <input type="text" [(ngModel)]="phoneNumber.country" class="input" placeholder="1" maxlength="2">
+                <input type="text" [(ngModel)]="phoneNumber.area" class="input" placeholder="949" maxlength="3">
+                <input type="text" [(ngModel)]="phoneNumber.prefix" class="input" placeholder="555" maxlength="3">
+                <input type="text" [(ngModel)]="phoneNumber.line" class="input" placeholder="5555" maxlength="4">
+
+                <div id="recaptcha-container"></div>
+
+                <button (click)="sendLoginCode()" color="btn-primary">SMS Text Login Code</button>
+
+                <div *ngIf="windowRef.confirmationResult">
+                    <hr>
+                    <label for="code">Enter your Verification Code Here</label><br>
+                    <input type="text" name="code" [(ngModel)]="verificationCode">
+
+                    <button (click)="verifyLoginCode()">Verify</button>
+                </div>
+
             </div>
-            <div class="alert alert-{{responseMessageType}}" role="alert" *ngIf="responseMessage.length">
-                {{responseMessage}}
+
+            <div *ngIf="user">
+                You have successfully logged in with your phone number! UserId: {{ user?.uid }}
+
             </div>
-        </div>
-    </div>
-
-    <br><br>
-
-    <div [hidden]="user">
-        <h1>Sign In with Your Phone Number</h1>
-
-        <label for="phone">Phone Number</label><br>
-        <input type="text" [(ngModel)]="phoneNumber.country" class="input" placeholder="1" maxlength="2">
-        <input type="text" [(ngModel)]="phoneNumber.area" class="input" placeholder="949" maxlength="3">
-        <input type="text" [(ngModel)]="phoneNumber.prefix" class="input" placeholder="555" maxlength="3">
-        <input type="text" [(ngModel)]="phoneNumber.line" class="input" placeholder="5555" maxlength="4">
-
-        <div id="recaptcha-container"></div>
-
-        <button (click)="sendLoginCode()">SMS Text Login Code</button>
-
-        <div *ngIf="windowRef.confirmationResult">
-            <hr>
-            <label for="code">Enter your Verification Code Here</label><br>
-            <input type="text" name="code" [(ngModel)]="verificationCode">
-
-            <button (click)="verifyLoginCode()">Verify</button>
-        </div>
-
-    </div>
-
-    <div *ngIf="user">
-        You have successfully logged in with your phone number! UserId: {{ user?.uid }}
-
+        </div> -->
+            </div>
+        </ion-card>
     </div>
 </ion-content>

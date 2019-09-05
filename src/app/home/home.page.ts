@@ -60,5 +60,8 @@ export class HomePage {
 add2(){
   this.router.navigate ( ['/add']);
 }
+
+
+
 }
 

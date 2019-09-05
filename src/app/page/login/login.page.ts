@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { PhoneNumber } from 'src/app/module/phone';
 import { WindowService } from 'src/app/service/window.service';
-import * as firebase from 'firebase';
+import { auth } from 'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
+
+
 
 
 
@@ -21,27 +23,29 @@ export class LoginPage implements OnInit {
   isForgotPassword: boolean;
   userDetails: any;
  
-  windowRef: any;
+  // windowRef: any;
 
-  phoneNumber = new PhoneNumber()
+  // phoneNumber = new PhoneNumber()
 
-  verificationCode: string;
+  // verificationCode: string;
 
-  user: any;
+  // user: any;
+  // afAuth: any;
  
   constructor(
     private authService: AuthService,
-    private win: WindowService
+    private win: WindowService,
+    private afAuth: AngularFireAuth
   ) {
     this.selectedVal = 'login';
     this.isForgotPassword = false;
  
   }
   ngOnInit() {
-    this.windowRef = this.win.windowRef
-    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container')
+    // this.windowRef = this.win.windowRef
+    // this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container')
 
-    this.windowRef.recaptchaVerifier.render()
+    // this.windowRef.recaptchaVerifier.render()
   }
  
   // Comman Method to Show Message and Hide after 2 seconds
@@ -92,7 +96,7 @@ export class LoginPage implements OnInit {
   // Register user with  provided Email/ Password
   registerUser() {
     this.authService.register(this.emailInput, this.passwordInput)
-      .then(res => {
+      .then(() => {
  
         // Send Varification link in email
         this.authService.sendEmailVerification().then(res => {
@@ -134,31 +138,66 @@ export class LoginPage implements OnInit {
       });
   }
 
-  sendLoginCode() {
+  // facebookLogin() {
+  //   this.authService.loginWithFb()
+  //     .then(res => {
+  //       console.log(res);
+  //       this.showMessage("success", "Successfully Logged In with facebook");
+  //       this.isUserLoggedIn();
+  //     }, err => {
+  //       this.showMessage("danger", err.message);
+  //     });
+  // }
+  async facebookSignIn(){
+    try{
+      const result = await this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
+        console.log(result);
+        if(result){
+          // this.router.navigateByUrl("/home");
+        }
+     }catch(e){
+      console.error(e);
+     }
+    }
+  
+   async twitterSignIn(){
+     try{
+    const result = await this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider())
+      console.log(result);
+      if(result){
+        // this.router.navigateByUrl("/home");
+      }
+   }catch(e){
+    console.error(e);
+   }
 
-    const appVerifier = this.windowRef.recaptchaVerifier;
+   }
 
-    const num = this.phoneNumber.e164;
+  // sendLoginCode() {
 
-    firebase.auth().signInWithPhoneNumber(num, appVerifier)
-            .then(result => {
+  //   const appVerifier = this.windowRef.recaptchaVerifier;
 
-                this.windowRef.confirmationResult = result;
+  //   const num = this.phoneNumber.e164;
 
-            })
-            .catch( error => console.log(error) );
+  //   firebase.auth().signInWithPhoneNumber(num, appVerifier)
+  //           .then(result => {
 
-  }
+  //               this.windowRef.confirmationResult = result;
 
-  verifyLoginCode() {
-    this.windowRef.confirmationResult
-                  .confirm(this.verificationCode)
-                  .then( result => {
+  //           })
+  //           .catch( error => console.log(error) );
 
-                    this.user = result.user;
+  // }
 
-    })
-    .catch( error => console.log(error, "Incorrect code entered?"));
-  }
+  // verifyLoginCode() {
+  //   this.windowRef.confirmationResult
+  //                 .confirm(this.verificationCode)
+  //                 .then( result => {
+
+  //                   this.user = result.user;
+
+  //   })
+  //   .catch( error => console.log(error, "Incorrect code entered?"));
+  // }
 
 }

@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { NumPage } from './num.page';
 
+
+
 const routes: Routes = [
   {
     path: '',
@@ -20,6 +22,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
+     
   ],
   declarations: [NumPage]
 })

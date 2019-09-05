@@ -4,14 +4,19 @@ import { Router } from "@angular/router";
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  loginWithFb: any;
 
    constructor(
     public angularFireAuth: AngularFireAuth,
-    public router: Router
+    public router: Router,
+    
   ) {
     this.angularFireAuth.authState.subscribe(userResponse => {
       if (userResponse) {
@@ -20,7 +25,12 @@ export class AuthService {
         localStorage.setItem('user', null);
       }
     })
+
   }
+ 
+  
+
+  
  
  
   async login(email: string, password: string) {
